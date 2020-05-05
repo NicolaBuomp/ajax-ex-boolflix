@@ -27,14 +27,30 @@
     <script id="movie-template" type="text/x-handlebars-template">
 
         <div class="box-movie {{genre}}">
-            <li class="{{addClass}}">{{title}}</li>
-            <li class="{{addClass}}">{{originalTitle}}</li>
-            <li class="{{addClass}}">{{originalLanguage}}</li>
-            <li class="{{addClass}}">{{vote}}</li>
+
+            <li class="{{addClass}}">
+                <span>Titolo:</span>
+                <span>{{title}}</span>
+            </li>
+            <li class="{{addClass}}">
+                <span>Titolo originale:</span>
+                <span>{{originalTitle}}</span>
+            </li>
+            <li class="{{addClass}}">
+                <span>Lingua originale:</span>
+                <span>{{{originalLanguage}}}</span>
+            </li>
+            <li class="{{addClass}}">
+                <span>Voto:</span>
+                <span>{{{vote}}}</span>
+            </li>
+            <li class="{{addClass}}">
+                <span>Tipo:</span>
+                <span>{{tipo}}</span>
+            </li>
         </div>
 
     </script>
-
 
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js'></script>
