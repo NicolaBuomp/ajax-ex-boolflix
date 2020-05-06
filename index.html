@@ -48,34 +48,39 @@
 
         <div class="box-movie">
 
-            <img class="poster-image" src="{{{posterImage}}}" alt="">
+            <img src="{{{posterImage}}}" alt="">
+           
+            
 
-            <ul class="list-spec-movie activate">
-                <li>
-                    <span>Titolo:</span>
-                    <span>{{ title }}</span>
-                </li>
-                <li>
-                    <span>Titolo originale:</span>
-                    <span>{{ originalTitle }}</span>
-                </li>
-                <li>
-                    <span>Lingua originale:</span>
-                    <span>{{{ originalLanguage }}}</span>
-                </li>
-                <li>
-                    <span>Voto:</span>
-                    <span>{{{ vote }}}</span>
-                </li>
-                <li>
-                    <span>Tipo:</span>
-                    <span>{{ tipo }}</span>
-                </li>
-                <li>
-                    <span>Overview:</span>
-                    <span>{{ overview }}</span>
-                </li>
-            </ul>
+            <div class="list-box">
+                <ul class="list-spec-movie">
+                    <li>
+                        <span>Titolo:</span>
+                        <span>{{ title }}</span>
+                    </li>
+                    <li>
+                        <span>Titolo originale:</span>
+                        <span>{{ originalTitle }}</span>
+                    </li>
+                    <li>
+                        <span>Lingua originale:</span>
+                        <span>{{{ originalLanguage }}}</span>
+                    </li>
+                    <li>
+                        <span>Voto:</span>
+                        <span>{{{ vote }}}</span>
+                    </li>
+                    <li>
+                        <span>Tipo:</span>
+                        <span>{{ tipo }}</span>
+                    </li>
+                    <li>
+                        <span>Overview:</span>
+                        <span>{{ overview }}</span>
+                    </li>
+                </ul>
+            </div>
+            
             
 
         </div>

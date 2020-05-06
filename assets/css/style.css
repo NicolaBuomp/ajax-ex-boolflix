@@ -76,38 +76,46 @@ header{
 .list-movie{
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
 
 .box-movie {
     margin: 10px;
     position: relative;
+    background-color: #000;
 }
 
+
+
 .box-movie:hover{
-    filter: opacity(10%);
+    filter: opacity(0,5);
+}
+
+.list-box{
+    opacity: 0;
+}
+
+.box-movie:hover img{
+    filter: opacity(2%);
+}
+
+.box-movie:hover .list-box{
+    opacity: 1;
 }
 
 .list-spec-movie{
+    position: absolute;
     margin: 10px;
     font-size: 20px;
-    position: absolute;
-    bottom:150px;
     color: white;
+    top: 30%;
 }
 
-.list-spec-movie:hover{
-    opacity: 1;
+.list-spec-movie li{
+    margin: 5px 0;
 }
 
 .img-flag{
     width: 20px;
-}
-
-.activate{
-    display: block;
-}
-
-.disactivate{
-    display: none;
 }
