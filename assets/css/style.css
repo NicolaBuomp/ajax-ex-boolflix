@@ -1,7 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    background-color: #434343;
+}
+
+/* utility */
+
+.font-title {
+    font-family: 'Roboto Slab', serif;
+}
+
+li{
+    list-style: none;
+}
+
+.container{
+    width: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.d-flex{
+    display: flex;
+}
+
+/* Header */
+
+header{
+    width: 100%;
+    background-color: black;
+}
+
+.header-nav {
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    color: red;
+}
+
+
+.search .search-movies{
+    width: 250px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+    background-color: #434343;
+}
+
+.search .btn-search{
+    cursor: pointer;
+    background-color: #434343;
+    border: none;
+    height: 30px;
+    width: 50px;
+    border-radius: 2px;
+}
+
+
+/* Main */
+
+
+.app{
+    padding: 20px 0;
+}
+
+.list-movie{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
 .box-movie {
-    margin: 20px;
+    margin: 10px;
+    position: relative;
+}
+
+.box-movie:hover{
+    filter: opacity(10%);
+}
+
+.list-spec-movie{
+    margin: 10px;
+    font-size: 20px;
+    position: absolute;
+    bottom:150px;
+    color: white;
+}
+
+.list-spec-movie:hover{
+    opacity: 1;
 }
 
 .img-flag{
     width: 20px;
+}
+
+.activate{
+    display: block;
+}
+
+.disactivate{
+    display: none;
 }
