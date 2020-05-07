@@ -3,6 +3,7 @@ $(document).ready(function () {
     var search = $('.search-movies');
     var button = $('.btn-search');
     var listMovie = $('.list-movie');
+    var title = $('.font-title');
 
     // Handlebars
     var source = $('#movie-template').html();
@@ -12,57 +13,58 @@ $(document).ready(function () {
     // Ricerca tramite invio
     button.click(function () {
 
-        reset(listMovie);
-
         if (search.val() !== '') {
 
-            searchMovie (template, search, listMovie, 'Film');
+            searchMovie(template, search, listMovie, 'Film');
 
-            searchMovie (template, search, listMovie, 'Serie TV');
+            searchMovie(template, search, listMovie, 'Serie TV');
 
         } else {
             alert('ATTENZIONE, il campo è vuoto!')
             search.select();
         };
 
-        search.val('');
     });
 
 
     // Ricerca tramite tasto invio
-    search.keyup(function(event){
+    search.keyup(function (event) {
 
-        if(event.which == 13){
-
-            reset(listMovie);
+        if (event.which == 13) {
 
             if (search.val() !== '') {
 
-                searchMovie (template, search, listMovie, 'Film');
+                searchMovie(template, search, listMovie, 'Film');
 
-                searchMovie (template, search, listMovie, 'Serie TV');
+                searchMovie(template, search, listMovie, 'Serie TV');
 
             } else {
                 alert('ATTENZIONE, il campo è vuoto!')
                 search.select();
             };
-    
-            search.val('');
-
         }
-    }); 
+    });
+
+    title.click(function () {
+
+        search.val('');
+        reset(listMovie);
+
+    })
 });
 
 // FUNCTION
 
 // Function Ajax
-function searchMovie (template, search, listMovie, type) {
+function searchMovie(template, search, listMovie, type) {
+
+    reset(listMovie);
 
     var apiUrl;
 
-    if (type == 'Film'){
+    if (type == 'Film') {
         apiUrl = 'https://api.themoviedb.org/3/search/movie';
-    } else if (type == 'Serie TV'){
+    } else if (type == 'Serie TV') {
         apiUrl = 'https://api.themoviedb.org/3/search/tv';
     }
 
@@ -75,13 +77,13 @@ function searchMovie (template, search, listMovie, type) {
             language: 'it-IT',
         },
         success: function (res) {
-        
+
             var movies = res.results;
 
             if (movies.length > 0) {
 
                 printMovie(template, movies, listMovie, type)
-                
+
             } else {
 
                 alert('Nessun film trovato')
@@ -106,25 +108,35 @@ function printMovie(template, movies, container, type) {
 
         var title, originalTitle;
 
-        if(type == 'Film'){
+        if (type == 'Film') {
 
             title = thisFilm.title;
             originalTitle = thisFilm.original_title;
 
-        } else if (type == 'Serie TV'){
+        } else if (type == 'Serie TV') {
 
             title = thisFilm.name
             originalTitle = thisFilm.original_name
         }
 
+        var image;
+
+        if (thisFilm.poster_path == null) {
+
+            image = 'assets/img/no-poster.png';
+
+        } else {
+            image = "https://image.tmdb.org/t/p/w342/" + thisFilm.poster_path;
+        }
+
         var context = {
-            posterImage:"https://image.tmdb.org/t/p/w342/"+ thisFilm.poster_path,
+            posterImage: image,
             title: title,
             originalTitle: originalTitle,
             originalLanguage: flag(thisFilm.original_language),
             vote: star(thisFilm.vote_average),
             tipo: type,
-            overview: overviewSub (thisFilm.overview)
+            overview: thisFilm.overview.substr(0, 80) + '...'
         };
         var set = template(context);
 
@@ -139,34 +151,34 @@ function reset(element) {
 
 
 // Funzione per le stelline
-function star (n){
+function star(n) {
 
     var thisNumber = Math.ceil(n / 2);
-    
+
     var resultStar = '';
 
-    for (i = 0; i <+ 5; i++){
+    for (i = 0; i < +5; i++) {
 
-        if(i <= thisNumber){
+        if (i <= thisNumber) {
 
             resultStar += '<i class="fas fa-star"></i>'
         } else {
 
             resultStar += '<i class="far fa-star"></i>'
         }
-        
+
     }
 
     return resultStar;
 };
 
 // Funzione per le bandiere
-function flag (flags){
-    
-    if (flags === 'en'){
+function flag(flags) {
+
+    if (flags === 'en') {
 
         return '<img class="img-flag" src="assets/img/en.svg" alt="Bandiera inglese">'
-    }else if (flags === 'it'){
+    } else if (flags === 'it') {
 
         return '<img class="img-flag" src="assets/img/it.svg" alt="Bandiera italiana">'
     } else {
@@ -174,13 +186,3 @@ function flag (flags){
         return flags;
     }
 };
-
-
-// Function substring
-function overviewSub (string){
-
-    var res = string.substr(0,150);
-
-    return res;
-}
-

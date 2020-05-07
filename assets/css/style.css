@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Raleway', sans-serif;
     background-color: #434343;
 }
@@ -12,28 +12,33 @@ body{
 /* utility */
 
 .font-title {
+    cursor: pointer;
     font-family: 'Roboto Slab', serif;
+    font-size: 40px;
+    font-weight: bold;
 }
 
-li{
+li {
     list-style: none;
 }
 
-.container{
+.container {
     width: auto;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.d-flex{
+.d-flex {
     display: flex;
 }
 
 /* Header */
 
-header{
+header {
     width: 100%;
     background-color: black;
+    position: fixed;
+    z-index: 1;
 }
 
 .header-nav {
@@ -42,80 +47,119 @@ header{
     align-items: center;
 }
 
-.logo{
+.logo {
     color: red;
 }
 
+.search{
+    display: flex;
+    align-items: center;
+}
 
-.search .search-movies{
+.search .search-movies {
+    width: 170px;
+    height: 30px;
+    margin-right: 10px;
+    border: none;
+    border-bottom: 1px solid #434343;
+    padding: 5px 7px;
+    transition: width 0.4s;
+    background-color: #000;
+    color: #434343;
+}
+
+.search .search-movies:focus,
+.search .search-movies:hover{
+    font-size: 16px;
     width: 250px;
-    height: 30px;
-    border: none;
-    border-radius: 2px;
-    padding: 5px 10px;
-    background-color: #434343;
 }
 
-.search .btn-search{
+.search .search-movies:focus,
+.search .search-movies:hover{
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.search .btn-search {
     cursor: pointer;
-    background-color: #434343;
+    background-color: #000;
     border: none;
-    height: 30px;
-    width: 50px;
-    border-radius: 2px;
+    padding: 5px 10px;
+    transition: scale 0.4s;
 }
 
+.search .btn-search i {
+    color: #434343;
+    font-size: 16px;
+}
+
+.search .btn-search:hover {
+    scale: 1.5;
+}
+
+.search .btn-search i:hover {
+    color: #fff;
+}
 
 /* Main */
-
-
-.app{
-    padding: 20px 0;
+.app {
+    padding-top: 90px;
 }
 
-.list-movie{
+.list-movie {
     flex-wrap: wrap;
     justify-content: center;
-    
+    overflow: hidden;
 }
-
 
 .box-movie {
     margin: 10px;
     position: relative;
-    background-color: #000;
+    height: 400px;
+    width: 270px;
 }
 
-
-
-.box-movie:hover{
-    filter: opacity(0,5);
+.box-movie:hover {
+    filter: opacity(0, 5);
 }
 
-.list-box{
+.list-box {
     opacity: 0;
 }
 
-.box-movie:hover img{
+.box-movie .poster-image{
+    transition: filter .4s;
+}
+
+.box-movie .poster-image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.box-movie:hover .poster-image {
     filter: opacity(2%);
 }
 
-.box-movie:hover .list-box{
+.box-movie:hover .list-box {
     opacity: 1;
 }
 
-.list-spec-movie{
+.list-spec-movie {
     position: absolute;
     margin: 10px;
     font-size: 20px;
     color: white;
-    top: 30%;
+    top: 20%;
 }
 
-.list-spec-movie li{
+.list-spec-movie li {
     margin: 5px 0;
 }
 
-.img-flag{
+.img-flag {
     width: 20px;
+}
+
+span i {
+    color: yellow;
 }
